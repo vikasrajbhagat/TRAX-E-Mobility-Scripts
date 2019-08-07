@@ -528,88 +528,88 @@ CREATE SEQUENCE "ODB"."SEQ_EMOBILITY_PICKLIST" INCREMENT BY 1 START WITH 1 MAXVA
 BEGIN 
   DBMS_AQADM.CREATE_QUEUE_TABLE(QUEUE_TABLE => '"ODB"."WINDOW_PRINTING_JOBS_QT"', QUEUE_PAYLOAD_TYPE => 'sys.aq$_jms_text_message', MULTIPLE_CONSUMERS => FALSE);
 END;
-
+/
 BEGIN 
   DBMS_AQADM.CREATE_QUEUE_TABLE(QUEUE_TABLE => '"ODB"."IOS_PRINTING_JOBS_QT"', QUEUE_PAYLOAD_TYPE => 'sys.aq$_jms_text_message', MULTIPLE_CONSUMERS => FALSE);
 END;
-
+/
 BEGIN
   DBMS_AQADM.CREATE_QUEUE(QUEUE_NAME => 'ODB.WINDOW_PRINTING_JOBS_Q', QUEUE_TABLE => 'ODB.WINDOW_PRINTING_JOBS_QT');
 END;
-
+/
 BEGIN
   DBMS_AQADM.CREATE_QUEUE(QUEUE_NAME => 'ODB.IOS_PRINTING_JOBS_Q', QUEUE_TABLE => 'ODB.IOS_PRINTING_JOBS_QT');
 END;
-
+/
 BEGIN
   DBMS_AQADM.START_QUEUE (QUEUE_NAME => 'ODB.WINDOW_PRINTING_JOBS_Q', ENQUEUE => TRUE , DEQUEUE => TRUE);
 END;
-
+/
 BEGIN
   DBMS_AQADM.START_QUEUE (QUEUE_NAME => 'IOS_PRINTING_JOBS_Q', ENQUEUE => TRUE , DEQUEUE => TRUE);
 END;
+/
 
-
-BEGIN
-	INSERT INTO ODB.MAIN
-	  (
-		TRANSACTION,
-		CATEGORY,
-		CATEGORY_TITLE,
-		WINDOW,
-		WALL,
-		BMP,
-		NOTES,
-		CREATED_BY,
-		CREATED_DATE,
-		MODIFIED_BY,
-		MODIFIED_DATE,
-		MAIN_CATEGORY,
-		SUB_CATEGORY_TITLE,
-		SUB_ACTIVE,
-		WINDOWS_APPLICATION,
-		AC_TYPE_SERIES_CONTROL,
-		PARAMETER,
-		WINDOW_TYPE,
-		WALL_CAPABILITY,
-		SECONDARY_CATEGORY_TITLE,
-		ID,
-		HIDDEN,
-		HELP_FILE,
-		WEBENABLED
-	  )
-	  VALUES
-	  (
-		1005,
-		'DETAIL',
-		'Update Part Drop Dead',
-		'main.update_drop_dead',
-		NULL,
-		NULL,
-		NULL,
-		'TRAXIFACE',
-		SYSDATE,
-		'TRAXIFACE',
-		SYSDATE,
-		'UPDATE',
-		'                                                                                                                                                                                                        '
-		,
-		NULL,
-		'NO',
-		NULL,
-		NULL,
-		NULL,
-		'NO',
-		NULL,
-		'0027.0009.0000.0000',
-		NULL,
-		NULL,
-		NULL
-	  );
+-- BEGIN
+	-- INSERT INTO ODB.MAIN
+	  -- (
+		-- TRANSACTION,
+		-- CATEGORY,
+		-- CATEGORY_TITLE,
+		-- WINDOW,
+		-- WALL,
+		-- BMP,
+		-- NOTES,
+		-- CREATED_BY,
+		-- CREATED_DATE,
+		-- MODIFIED_BY,
+		-- MODIFIED_DATE,
+		-- MAIN_CATEGORY,
+		-- SUB_CATEGORY_TITLE,
+		-- SUB_ACTIVE,
+		-- WINDOWS_APPLICATION,
+		-- AC_TYPE_SERIES_CONTROL,
+		-- PARAMETER,
+		-- WINDOW_TYPE,
+		-- WALL_CAPABILITY,
+		-- SECONDARY_CATEGORY_TITLE,
+		-- ID,
+		-- HIDDEN,
+		-- HELP_FILE,
+		-- WEBENABLED
+	  -- )
+	  -- VALUES
+	  -- (
+		-- 1005,
+		-- 'DETAIL',
+		-- 'Update Part Drop Dead',
+		-- 'main.update_drop_dead',
+		-- NULL,
+		-- NULL,
+		-- NULL,
+		-- 'TRAXIFACE',
+		-- SYSDATE,
+		-- 'TRAXIFACE',
+		-- SYSDATE,
+		-- 'UPDATE',
+		-- '                                                                                                                                                                                                        '
+		-- ,
+		-- NULL,
+		-- 'NO',
+		-- NULL,
+		-- NULL,
+		-- NULL,
+		-- 'NO',
+		-- NULL,
+		-- '0027.0009.0000.0000',
+		-- NULL,
+		-- NULL,
+		-- NULL
+	  -- );
 	  
-	  COMMIT;
-END;
-
+	  -- COMMIT;
+-- END;
+-- /
 BEGIN
 	INSERT INTO ODB.SYSTEM_TRAN (
 				SYSTEM_TRANSACTION,
@@ -655,7 +655,7 @@ BEGIN
 			
 			COMMIT;
 END;
-
+/
 BEGIN
 	-- deletes all defect_report_MIS orphan records 458 AS OF Aug 6, 2019
 	DELETE
@@ -670,7 +670,7 @@ BEGIN
 	  
 	COMMIT;  
 END;
-
+/
 
 --adding foreign key to the table since when deleting a defect from Trax it will not delete the MIS.  
 ALTER TABLE ODB.DEFECT_REPORT_MIS
