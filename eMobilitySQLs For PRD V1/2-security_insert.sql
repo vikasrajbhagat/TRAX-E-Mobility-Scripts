@@ -781,6 +781,13 @@ sysdate,'NELSON',sysdate,
 Insert into MAIN (TRANSACTION,CATEGORY,CATEGORY_TITLE,WINDOW,WALL,BMP,NOTES,CREATED_BY,CREATED_DATE,MODIFIED_BY,MODIFIED_DATE,MAIN_CATEGORY,SUB_CATEGORY_TITLE,SUB_ACTIVE,WINDOWS_APPLICATION,AC_TYPE_SERIES_CONTROL,PARAMETER,WALL_CAPABILITY,ID,SECONDARY_CATEGORY_TITLE,WINDOW_TYPE,HIDDEN,HELP_FILE,WEBENABLED) values (1011,'DETAIL','Line Control Login','main.login',null,null,null,'ADM',SYSDATE,'ADM',SYSDATE,'UPDATE','                                                                                                                                                                                                        ',null,'NO',null,null,'NO','0030.0023.0000.0000',null,null,null,null,'Y');
 
 
+delete from MAIN where category = 'TAB' and category_title = 'CustomerPortal' ; 
+ 
+update MAIN set hidden = 'Y' where category = 'TAB' and category_title = 'QuickTurn' ; 
+ 
+update MAIN set hidden = 'Y' where category = 'TAB' and category_title = 'Production Control' ;
+
+
 
 commit;
 
